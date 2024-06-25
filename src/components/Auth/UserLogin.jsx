@@ -1,9 +1,6 @@
-// src/components/UserLogin.jsx
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { auth, db } from '../firebaseConfig';
-import { collection, getDocs, query, where } from 'firebase/firestore';
 import './AuthForm.css';
 
 const UserLogin = () => {
@@ -15,24 +12,23 @@ const UserLogin = () => {
   const { email, password } = formData;
   const navigate = useNavigate();
 
-  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      const q = query(collection(db, 'users'), where('uid', '==', user.uid));
-      const querySnapshot = await getDocs(q);
-      if (querySnapshot.empty) {
-        throw new Error('Not a user');
-      }
-
+      const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCo4hyjYmPDYqOrCY8sJEshp9Gybduz7aA', {
+        email,
+        password,
+        returnSecureToken: true
+      });
+      console.log(res.data);
       alert('Successfully Logged In');
-      navigate('/userdashboard');
+      // Store token and navigate to dashboard
+      localStorage.setItem('token', res.data.idToken);
+      navigate('/user/home');
     } catch (err) {
-      console.error('Invalid Credentials:', err);
+      console.error(err);
       alert('Invalid Credentials');
     }
   };

@@ -1,27 +1,45 @@
-// src/App.js
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import UserLogin from './components/Auth/UserLogin';
+import UserSignup from './components/Auth/UserSignup';
+import WorkerLogin from './components/Auth/WorkerLogin';
+import WorkerSignup from './components/Auth/WorkerSignup';
+import UserDashboard from './components/UserDashboard/UserDashboard';
+import WorkerDashboard from './components/WorkerDashboard/WorkerDashboard';
 import Home from './components/Home';
-import UserLogin from './components/UserLogin';
-import UserSignup from './components/UserSignup';
-import WorkerLogin from './components/WorkerLogin';
-import WorkerSignup from './components/WorkerSignup';
+import { AuthProvider } from './AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
-function App() {
+const App = () => {
   return (
-    <Router>
-      <div className="App">
+    <AuthProvider>
+      <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/userlogin" element={<UserLogin />} />
+          <Route path="/login" element={<UserLogin />} />
           <Route path="/usersignup" element={<UserSignup />} />
           <Route path="/workerlogin" element={<WorkerLogin />} />
           <Route path="/workersignup" element={<WorkerSignup />} />
+          <Route
+            path="/user/home"
+            element={
+              <ProtectedRoute>
+                <UserDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/worker/home"
+            element={
+              <ProtectedRoute>
+                <WorkerDashboard />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
