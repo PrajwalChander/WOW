@@ -1,6 +1,8 @@
+// src/components/UserLogin.jsx
 import React, { useState } from 'react';
-import axios from 'axios';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../../firebaseConfig';
 import './AuthForm.css';
 
 const UserLogin = () => {
@@ -17,18 +19,14 @@ const UserLogin = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCo4hyjYmPDYqOrCY8sJEshp9Gybduz7aA', {
-        email,
-        password,
-        returnSecureToken: true
-      });
-      console.log(res.data);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log('Successfully Logged In:', user);
       alert('Successfully Logged In');
-      // Store token and navigate to dashboard
-      localStorage.setItem('token', res.data.idToken);
+      // Navigate to user dashboard
       navigate('/user/home');
     } catch (err) {
-      console.error(err);
+      console.error('Invalid Credentials:', err);
       alert('Invalid Credentials');
     }
   };

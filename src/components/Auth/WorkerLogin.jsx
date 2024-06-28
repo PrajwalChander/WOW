@@ -1,4 +1,3 @@
-// src/components/WorkerLogin.jsx
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +24,9 @@ const WorkerLogin = () => {
 
       const q = query(collection(db, 'workers'), where('uid', '==', user.uid));
       const querySnapshot = await getDocs(q);
+      
       if (querySnapshot.empty) {
+        console.log('No worker found with this uid:', user.uid); // Debug log
         throw new Error('Not a worker');
       }
 

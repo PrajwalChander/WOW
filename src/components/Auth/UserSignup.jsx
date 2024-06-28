@@ -1,19 +1,22 @@
 // src/components/UserSignup.jsx
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { collection, addDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../../firebaseConfig';
+import { doc, setDoc } from 'firebase/firestore';
 import './AuthForm.css';
 
 const UserSignup = () => {
   const [formData, setFormData] = useState({
-    username: '',
     email: '',
-    phn: '',
-    password: ''
+    password: '',
+    username: '',
+    phone: '',
+    location: ''
   });
 
-  const { username, email, phn, password } = formData;
+  const { email, password, username, phone, location } = formData;
+  const navigate = useNavigate();
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -23,17 +26,20 @@ const UserSignup = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      await addDoc(collection(db, 'users'), {
+      // Check if document creation is successful
+      await setDoc(doc(db, 'users', user.uid), {
         uid: user.uid,
-        username,
         email,
-        phn
+        username,
+        phone,
+        location
       });
 
-      alert('Successfully Registered');
+      alert('Successfully Signed Up');
+      navigate('/login');
     } catch (err) {
-      console.error('Error Signing Up:', err);
-      alert('Error Signing Up');
+      console.error('Error during sign up:', err);
+      alert('Error during sign up');
     }
   };
 
@@ -43,8 +49,9 @@ const UserSignup = () => {
         <h2>User Sign Up</h2>
         <input type="text" name="username" value={username} onChange={onChange} required placeholder="Username" />
         <input type="email" name="email" value={email} onChange={onChange} required placeholder="Email" />
-        <input type="text" name="phn" value={phn} onChange={onChange} required placeholder="Phone Number" />
         <input type="password" name="password" value={password} onChange={onChange} required placeholder="Password" />
+        <input type="text" name="phone" value={phone} onChange={onChange} required placeholder="Phone" />
+        <input type="text" name="location" value={location} onChange={onChange} required placeholder="Location" />
         <button type="submit">Sign Up</button>
       </form>
     </div>
