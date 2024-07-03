@@ -7,12 +7,22 @@ import WorkerSignup from './components/Auth/WorkerSignup';
 import UserLogin from './components/Auth/UserLogin';
 import WorkerLogin from './components/Auth/WorkerLogin';
 import UserDashboard from './components/UserDashboard/UserDashboard';
-import WorkerDashboard from './components/WorkerDashboard/WorkerDashboard';
-import WorkerDetails from './components/UserDashboard/WorkerDetails';
+import WorkerHome from './components/WorkerDashboard/WorkerHome';
+//import WorkerDetails from './components/UserDashboard/WorkerDetails';
 import UserProfile from './components/UserDashboard/UserProfile';
 import UserBookings from './components/UserDashboard/UserBookings';
 import { AuthProvider } from './AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import Store from './components/UserDashboard/Store';
+import Cart from './components/UserDashboard/Cart';
+import ContactUs from './components/UserDashboard/ContactUs';
+
+// Worker Dashboard imports
+import BookingHistory from './components/WorkerDashboard/BookingHistory';
+import Sell from './components/WorkerDashboard/Sell';
+import Orders from './components/WorkerDashboard/Orders';
+import WorkerProfile from './components/WorkerDashboard/WorkerProfile';
+//import BookingDetails from './components/WorkerDashboard/BookingDetails';
 
 const App = () => {
   return (
@@ -33,18 +43,34 @@ const App = () => {
             }
           />
           <Route
-            path="/workerdashboard"
+            path="/user/contact"
             element={
               <ProtectedRoute>
-                <WorkerDashboard />
+                <ContactUs />
               </ProtectedRoute>
             }
           />
           <Route
-            path="/user/worker/:workerId"
+            path="/workerdashboard"
             element={
               <ProtectedRoute>
-                <WorkerDetails />
+                <WorkerHome />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+           path="/user/store"
+           element={
+            <ProtectedRoute>
+               <Store />
+            </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user/cart"
+            element={
+              <ProtectedRoute>
+                <Cart />
               </ProtectedRoute>
             }
           />
@@ -61,6 +87,38 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <UserBookings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/worker/bookings"
+            element={
+              <ProtectedRoute>
+                <BookingHistory />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/worker/sell"
+            element={
+              <ProtectedRoute>
+                <Sell />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/worker/orders"
+            element={
+              <ProtectedRoute>
+                <Orders />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/worker/profile"
+            element={
+              <ProtectedRoute>
+                <WorkerProfile />
               </ProtectedRoute>
             }
           />

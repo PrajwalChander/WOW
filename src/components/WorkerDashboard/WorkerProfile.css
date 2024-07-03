@@ -1,0 +1,14 @@
+/* src/components/WorkerDashboard/WorkerProfile.css */
+.worker-profile {
+    padding: 20px;
+  }
+  
+  .profile-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: auto;
+  }
+  

@@ -1,0 +1,58 @@
+.worker-home {
+  padding: 20px;
+}
+
+.booking-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.booking-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: calc(33.333% - 40px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.booking-card:hover {
+  transform: scale(1.05);
+}
+
+.booking-card h2 {
+  margin-top: 0;
+}
+
+.booking-card p {
+  margin: 10px 0;
+}
+
+.status-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-buttons button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.status-buttons button.executed {
+  background-color: #28a745;
+}
+
+.status-buttons button.rejected {
+  background-color: #dc3545;
+}
+
+.status-buttons button:hover {
+  opacity: 0.8;
+}
