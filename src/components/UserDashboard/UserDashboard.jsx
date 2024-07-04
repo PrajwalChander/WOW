@@ -96,7 +96,6 @@ const UserDashboard = () => {
 
   return (
     <div>
-    <div>
       <SiteHeader />
       <NavBar />
       <center><SearchBar 
@@ -130,7 +129,6 @@ const UserDashboard = () => {
           ))}
         </div>
       </div>
-    </div>
     </div>
   );
 };

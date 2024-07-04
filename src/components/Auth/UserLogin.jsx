@@ -1,9 +1,8 @@
-// src/components/UserLogin.jsx
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebaseConfig';
-import './AuthForm.css';
+import styles from './AuthForm.module.css';
 
 const UserLogin = () => {
   const [formData, setFormData] = useState({
@@ -32,15 +31,32 @@ const UserLogin = () => {
   };
 
   return (
-    <div className="container">
+    <div class={styles.body}>
+    <div className={styles.container}>
       <form onSubmit={onSubmit}>
         <h2>User Login</h2>
-        <input type="email" name="email" value={email} onChange={onChange} required placeholder="Email" />
-        <input type="password" name="password" value={password} onChange={onChange} required placeholder="Password" />
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={onChange}
+          required
+          placeholder="Email"
+          //className={email === '' ? styles.invalid : ''}
+        />
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={onChange}
+          required
+          placeholder="Password"
+          //className={password === '' ? styles.invalid : ''}
+        />
         <button type="submit">Login</button>
         <p>New User? <a href="/usersignup">Sign Up</a></p>
       </form>
-    </div>
+</div>    </div>
   );
 };
 

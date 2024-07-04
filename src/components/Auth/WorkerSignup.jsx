@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../../firebaseConfig';
 import { doc, setDoc } from 'firebase/firestore';
 import { cities } from './Cities';
-import './AuthForm.css';
+import styles from './AuthForm.module.css';
 
 const WorkerSignup = () => {
   const [formData, setFormData] = useState({
@@ -13,8 +13,10 @@ const WorkerSignup = () => {
     username: '',
     phone: '',
     location: '',
-    roles: []
+    roles: ''
   });
+  const [isLocationValid, setIsLocationValid] = useState(true);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const { email, password, username, phone, location, roles } = formData;
   const navigate = useNavigate();
@@ -24,9 +26,10 @@ const WorkerSignup = () => {
   const onSubmit = async e => {
     e.preventDefault();
     if (!cities.includes(location)) {
-      alert('Please select a valid city from the list');
+      setIsLocationValid(false);
       return;
     }
+    setIsLocationValid(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
@@ -50,6 +53,12 @@ const WorkerSignup = () => {
 
   const handleLocationChange = e => {
     setFormData({ ...formData, location: e.target.value });
+    setShowDropdown(true);
+  };
+
+  const handleLocationSelect = city => {
+    setFormData({ ...formData, location: city });
+    setShowDropdown(false);
   };
 
   const filteredCities = cities.filter(city =>
@@ -57,32 +66,30 @@ const WorkerSignup = () => {
   );
 
   return (
-    <div className="container">
-      <div className="navbar">
-        <a href="/usersignin">User</a>
-        <a href="/workersignin">Worker</a>
-      </div>
+    <div class={styles.body}>
+    <div className={styles.container}>
       <form onSubmit={onSubmit}>
         <h2>Worker Sign Up</h2>
         <input type="text" name="username" value={username} onChange={onChange} required placeholder="Username" />
         <input type="email" name="email" value={email} onChange={onChange} required placeholder="Email" />
         <input type="password" name="password" value={password} onChange={onChange} required placeholder="Password" />
         <input type="text" name="phone" value={phone} onChange={onChange} required placeholder="Phone" />
-        <div className="location-wrapper">
+        <div className={styles.locationWrapper}>
           <input
             type="text"
             id="location"
             name="location"
             value={location}
             onChange={handleLocationChange}
+            className={isLocationValid ? '' : styles.invalid}
             required
             placeholder="Enter your location"
             autoComplete="off"
           />
-          {location && (
-            <ul className="location-dropdown">
+          {location && showDropdown && (
+            <ul className={styles.locationDropdown}>
               {filteredCities.map(city => (
-                <li key={city} onClick={() => setFormData({ ...formData, location: city })}>
+                <li key={city} onClick={() => handleLocationSelect(city)}>
                   {city}
                 </li>
               ))}
@@ -90,9 +97,9 @@ const WorkerSignup = () => {
           )}
         </div>
         <input type="text" name="roles" value={roles} onChange={onChange} required placeholder="Roles (comma separated)" />
-        <button type="submit">Sign Up</button>
+        <button type="submit" className={styles.submitButton}>Sign Up</button>
       </form>
-    </div>
+    </div></div>
   );
 };
 

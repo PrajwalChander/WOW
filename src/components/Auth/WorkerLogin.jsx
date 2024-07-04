@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../../firebaseConfig';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import './AuthForm.css';
+import styles from './AuthForm.module.css';
 
 const WorkerLogin = () => {
   const [formData, setFormData] = useState({
@@ -39,15 +39,16 @@ const WorkerLogin = () => {
   };
 
   return (
-    <div className="container">
+    <div class={styles.body}>
+    <div className={styles.container}>
       <form onSubmit={onSubmit}>
         <h2>Worker Login</h2>
         <input type="email" name="email" value={email} onChange={onChange} required placeholder="Email" />
         <input type="password" name="password" value={password} onChange={onChange} required placeholder="Password" />
-        <button type="submit">Login</button>
+        <button type="submit" className={styles.submitButton}>Login</button>
         <p>New Worker? <a href="/workersignup">Sign Up</a></p>
       </form>
-    </div>
+</div>    </div>
   );
 };
 

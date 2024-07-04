@@ -4,7 +4,7 @@ export const cities = [
   "Araku valley", "Aurangabad", "Ayodhya", "Badrinath", "Bangalore", "Baroda", "Bastar",
   "Bhagalpur", "Bhilai", "Bhimtal", "Bhopal", "Bhubaneswar", "Bhuj", "Bidar", "Bilaspur",
   "Bodh Gaya", "Calicut", "Chail", "Chamba", "Chandigarh", "Chennai", "Chennai Beaches",
-  "Cherai", "Cherrapunji", "Chidambaram", "Chikhaldara Hills", "Chopta", "Coimbatore", "Coonoor",
+  "Cherai", "Cherrapunji", "Chidambaram", "Chikhaldara Hills","Chittoor", "Chopta", "Coimbatore", "Coonoor",
   "Coorg", "Corbett National Park", "Cotigao Wild Life Sanctuary", "Cuttack", "Dadra and Nagar Haveli",
   "Dalhousie", "Daman and Diu", "Darjeeling", "Dehradun", "Delhi", "Devikulam", "Dhanaulti",
   "Dharamashala", "Dindigul", "Dudhwa National Park", "Dwaraka", "Faridabad", "Gandhinagar",
