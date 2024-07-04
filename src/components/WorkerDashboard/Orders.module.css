@@ -3,19 +3,19 @@
   place-items: center;
 }
 
-.order-list {
+.orderList {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-.order-list {
+.orderList {
   display: flex;
   flex-wrap: wrap;        /* Allow items to wrap to the next line */
   justify-content: center;/* Center items horizontally within the container */
   gap: 20px;              /* Optional: Add some gap between items */
 }
-.order-card {
+.orderCard {
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 12px;
@@ -27,7 +27,7 @@
   border-left: 5px solid #ffc107;
 }
 
-.product-image {
+.productImage {
   width: 100px;
   height: 100px;
   object-fit: cover;
@@ -35,24 +35,24 @@
   margin-bottom: 10px;
 }
 
-.order-card h2 {
+.orderCard h2 {
   margin: 0;
   font-size: 16px;
   color:black;
 }
 
-.order-card p {
+.orderCard p {
   margin: 5px 0;
   font-size: 14px;
   color: black;
 }
 
-.status-buttons {
+.statusButtons {
   display: flex;
   gap: 10px;
 }
 
-.status-buttons button {
+.statusButtons button {
   padding: 5px 10px;
   border: none;
   border-radius: 3px;
@@ -65,7 +65,7 @@
 }
 
 .delivered {
-  background-color: #52dd33 important;
+  background-color: #52dd33;
   color: white;
 }
 
@@ -73,23 +73,31 @@
   background-color: #f34633;
   color: white;
 }
+.rejected:hover {
+  background-color: #bd1c0b;
+  color: white;
+}
+.approved:hover {
+  background-color: #075692;
+  color: white;
+}
 
-.order-card.approved {
+.orderCard.approved {
   border-left: 5px solid #4fc0e3;
   background-color: #ace9e6;
 }
 
-.order-card.delivered {
-  border-left: 5px solid #28a745 !important ;
+.orderCard.delivered {
+  border-left: 5px solid #28a745;
   background-color: #c0eacc;
 }
 
-.order-card.rejected {
+.orderCard.rejected {
   border-left: 5px solid #dc3545;
   background-color: #f0b9b9;
 }
 
-.search-bar {
+.searchBar {
   margin-bottom: 20px;
   padding: 10px;
   width: 100%;

@@ -1,15 +1,15 @@
-.booking-history {
+.bookingHistory {
   padding: 20px;
 }
 
-.booking-history-list {
+.bookingHistoryList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
 
-.booking-history-card {
+.bookingHistoryCard {
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -19,15 +19,15 @@
   transition: transform 0.2s;
 }
 
-.booking-history-card:hover {
+.bookingHistoryCard:hover {
   transform: scale(1.05);
 }
 
-.booking-history-card h2 {
+.bookingHistoryCard h2 {
   margin-top: 0;
 }
 
-.booking-history-card p {
+.bookingHistoryCard p {
   margin: 10px 0;
 }
 .executed {
@@ -42,3 +42,10 @@
   color: black;
 }
 
+.searchBar {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  max-width: 500px;
+  font-size: 16px;
+}

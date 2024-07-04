@@ -3,7 +3,7 @@ import { useAuth } from '../../AuthContext';
 import { db } from '../../firebaseConfig';
 import { collection, query, where, getDocs, updateDoc, doc, getDoc } from 'firebase/firestore';
 import NavBarWorker from './NavBarWorker';
-import './Orders.css';
+import style from './Orders.module.css';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -67,28 +67,28 @@ const Orders = () => {
   return (
     <div>
       <NavBarWorker />
-      <div className="orders">
+      <div className={style.orders}>
         <h1>Orders</h1>
         <input 
           type="text" 
           placeholder="Search orders..." 
           value={searchTerm} 
           onChange={handleSearch} 
-          className="search-bar"
+          className={style.searchBar}
         />
-        <div className="order-list">
+        <div className={style.orderList}>
           {filteredOrders.map((order) => (
-            <div key={order.id} className={`order-card ${order.status.toLowerCase()}`}>
-              {order.product?.imageUrl && <img src={order.product.imageUrl} alt={order.product.title} className="product-image" />}
+            <div key={order.id} className={`${style['orderCard']} ${style[order.status.toLowerCase()]}`}>
+              {order.product?.imageUrl && <img src={order.product.imageUrl} alt={order.product.title} className={style.productImage} />}
               <h2>{order.user?.username}</h2>
               <p>Phone: {order.user?.phone}</p>
               <p>Product: {order.product?.title}</p>
               <p>Quantity: {order.quantity}</p>
               <p>Status: {order.status}</p>
-              <div className="status-buttons">
-                <button onClick={() => handleStatusChange(order.id, 'Approved')} className="approved">Approved</button>
-                <button onClick={() => handleStatusChange(order.id, 'Delivered')} className="delivered">Delivered</button>
-                <button onClick={() => handleStatusChange(order.id, 'Rejected')} className="rejected">Rejected</button>
+              <div className={style.statusButtons}>
+                <button onClick={() => handleStatusChange(order.id, 'Approved')} className={style.approved}>Approved</button>
+                <button onClick={() => handleStatusChange(order.id, 'Delivered')} className={style.delivered}>Delivered</button>
+                <button onClick={() => handleStatusChange(order.id, 'Rejected')} className={style.rejected}>Rejected</button>
               </div>
             </div>
           ))}

@@ -4,7 +4,7 @@ import { db } from '../../firebaseConfig';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import NavBarWorker from './NavBarWorker';
 import SearchBar from './SearchBar';
-import './BookingHistory.css';
+import style from './BookingHistory.module.css';
 
 const BookingHistory = () => {
   const [bookings, setBookings] = useState([]);
@@ -62,12 +62,13 @@ const BookingHistory = () => {
   return (
     <div>
       <NavBarWorker />
-      <div className="booking-history">
+      <div className={style.bookingHistory}>
        <center> <h1>Booking History</h1>
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} /></center>
-        <div className="booking-history-list">
+       <div className={style.searchBar}>
+        <SearchBar  searchTerm={searchTerm} setSearchTerm={setSearchTerm} /></div></center>
+        <div className={style.bookingHistoryList}>
           {filteredBookings.map((booking) => (
-            <div key={booking.id} className={`booking-history-card ${booking.status === 'Executed' ? 'executed' : 'Rejected'}`}>
+            <div key={booking.id} className={`${style['bookingHistoryCard']} ${style[booking.status === 'Executed' ? 'executed' : 'Rejected']}`}>
               <h2>{booking.user?.username}</h2>
               <p>Email: {booking.user_email}</p>
               <p>Role: {booking.role}</p>
