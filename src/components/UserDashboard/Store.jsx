@@ -5,6 +5,7 @@ import { collection, getDocs, query, where, addDoc } from 'firebase/firestore';
 import NavBar from './NavBar';
 import SiteHeader from '../SiteHeader';
 import './Store.css';
+import SearchBar from './SearchBar';
 
 const Store = () => {
   const [products, setProducts] = useState([]);
@@ -54,13 +55,14 @@ const Store = () => {
 
   const handleBooking = async (product) => {
     try {
-      await addDoc(collection(db, 'bookings'), {
+      await addDoc(collection(db, 'orders'), {
         user_email: currentUser.email,
-        worker_email: product.worker_email,
-        role: 'product_booking',
+        seller_email: product.seller_email,
         product_id: product.id,
         status: 'pending',
-        timestamp: new Date()
+        timestamp: new Date(),
+        quantity: 1,
+        address: currentUser.location // Adding user location as address
       });
 
       alert('Product booked successfully');
@@ -86,16 +88,12 @@ const Store = () => {
       <SiteHeader />
       <NavBar />
       <center>
-      <div className="search-bar">
-        <input 
-          type="text" 
+      <SearchBar 
           placeholder="Search products by name, description, or cost" 
           value={searchTerm}
           onChange={handleSearch}
-        />
-      </div></center>
+      /></center>
       <div className="store">
-        <h1>Store</h1>
         <div className="product-list">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (

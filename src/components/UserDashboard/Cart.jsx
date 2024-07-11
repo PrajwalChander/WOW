@@ -3,10 +3,12 @@ import { useAuth } from '../../AuthContext';
 import { db } from '../../firebaseConfig';
 import { collection, getDocs, query, where, updateDoc, doc, deleteDoc, addDoc, getDoc } from 'firebase/firestore';
 import NavBar from './NavBar';
+import SiteHeader from '../SiteHeader';
 import './Cart.css';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [address, setAddress] = useState('');
   const { currentUser } = useAuth();
 
   useEffect(() => {
@@ -15,7 +17,6 @@ const Cart = () => {
       const querySnapshot = await getDocs(q);
       const cartList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-      // Fetch product details
       const productsPromises = cartList.map(async (item) => {
         const productRef = doc(db, 'products', item.product_id);
         const productSnap = await getDoc(productRef);
@@ -30,6 +31,7 @@ const Cart = () => {
   }, [currentUser.email]);
 
   const updateQuantity = async (item, quantity) => {
+    if (quantity < 1) return;
     const itemRef = doc(db, 'cart', item.id);
     await updateDoc(itemRef, { quantity });
     setCartItems(cartItems.map(cartItem => (cartItem.id === item.id ? { ...cartItem, quantity } : cartItem)));
@@ -42,6 +44,10 @@ const Cart = () => {
   };
 
   const placeOrder = async () => {
+    if (!address) {
+      alert('Please enter your address.');
+      return;
+    }
     try {
       const orders = await Promise.all(cartItems.map(async (item) => {
         const productRef = doc(db, 'products', item.product_id);
@@ -54,7 +60,8 @@ const Cart = () => {
           quantity: item.quantity,
           status: 'Pending',
           timestamp: new Date(),
-          seller_email: productData.seller_email
+          seller_email: productData.seller_email,
+          address: address
         };
       }));
 
@@ -69,6 +76,7 @@ const Cart = () => {
 
       setCartItems([]);
       alert('Order placed successfully');
+      window.location.href = '/user/success'; // Navigate to success page
     } catch (error) {
       console.error('Error placing order:', error);
       alert('Error placing order');
@@ -81,6 +89,7 @@ const Cart = () => {
 
   return (
     <div>
+    <SiteHeader />
       <NavBar />
       <div className="cart">
         <h1>Cart</h1>
@@ -90,18 +99,20 @@ const Cart = () => {
           <div className="cart-list">
             {cartItems.map((item) => (
               <div key={item.id} className="cart-item">
-                <img src={item.product.imageUrl} alt={item.product.title} />
+                <img src={item.product.imageUrl} alt={item.product.title} className="product-image" />
                 <div className="cart-item-details">
                   <h2>{item.product.title}</h2>
                   <p>Price: ${item.product.price}</p>
-                  <p>Quantity: 
+                  <div className="quantity-control">
+                    <button onClick={() => updateQuantity(item, item.quantity - 1)}>-</button>
                     <input
                       type="number"
                       min="1"
                       value={item.quantity}
                       onChange={(e) => updateQuantity(item, parseInt(e.target.value, 10))}
                     />
-                  </p>
+                    <button onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
+                  </div>
                   <p>Total: ${item.quantity * item.product.price}</p>
                   <button onClick={() => removeFromCart(item)}>Remove</button>
                 </div>
@@ -109,7 +120,14 @@ const Cart = () => {
             ))}
             <div className="cart-summary">
               <h2>Total Amount: ${calculateTotal()}</h2>
-              <button className="place-order" onClick={placeOrder}>Place Order</button>
+              <input
+                type="text"
+                placeholder="Enter your address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className="address-input"
+              />
+              <button className="place-order" onClick={placeOrder}>Proceed To Booking</button>
             </div>
           </div>
         )}

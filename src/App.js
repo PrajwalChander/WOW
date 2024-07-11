@@ -16,6 +16,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Store from './components/UserDashboard/Store';
 import Cart from './components/UserDashboard/Cart';
 import ContactUs from './components/UserDashboard/ContactUs';
+import Success from './components/UserDashboard/Success';
 
 // Worker Dashboard imports
 import BookingHistory from './components/WorkerDashboard/BookingHistory';
@@ -48,6 +49,12 @@ const App = () => {
               <ProtectedRoute>
                 <ContactUs />
               </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user/success"
+            element={
+                <Success />
             }
           />
           <Route

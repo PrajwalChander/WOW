@@ -5,7 +5,7 @@ import { db } from '../../firebaseConfig';
 import { collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
 import NavBarWorker from './NavBarWorker';
 import SearchBar from './SearchBar';
-import './WorkerHome.css';
+import style from './WorkerHome.module.css';
 
 const WorkerHome = () => {
   const [bookings, setBookings] = useState([]);
@@ -53,6 +53,9 @@ const WorkerHome = () => {
       await updateDoc(docRef, { status });
       const updatedBookings = await getDocs(query(collection(db, 'bookings'), where('worker_email', '==', currentUser.email), where('status', '==', 'pending')));
       const bookingsList = updatedBookings.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      
+      
+
 
       const detailedBookings = await Promise.all(bookingsList.map(async (booking) => {
         const userRef = query(collection(db, 'users'), where('email', '==', booking.user_email));
@@ -71,20 +74,20 @@ const WorkerHome = () => {
   return (
     <div>
       <NavBarWorker />
-      <div className="worker-home">
+      <div className={style.workerHome}>
        <center> <h1>Current Bookings</h1>
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} /></center>
-        <div className="booking-list">
+        <div className={style.bookingList}>
           {filteredBookings.map((booking) => (
-            <div key={booking.id} className="booking-card">
+            <div key={booking.id} className={style.bookingCard}>
               <h2>{booking.user?.username}</h2>
               <p>Phone: {booking.user?.phone}</p>
               <p>Email: {booking.user_email}</p>
               <p>Location: {booking.location}</p>
               <p>Role: {booking.role}</p>
-              <div className="status-buttons">
-                <button onClick={() => handleStatusChange(booking.id, 'Executed')} className="executed">Executed</button>
-                <button onClick={() => handleStatusChange(booking.id, 'Rejected')} className="rejected">Rejected</button>
+              <div className={style.statusButtons}>
+                <button onClick={() => handleStatusChange(booking.id, 'Executed')} className={style.executed}>Executed</button>
+                <button onClick={() => handleStatusChange(booking.id, 'Rejected')} className={style.rejected}>Rejected</button>
               </div>
             </div>
           ))}

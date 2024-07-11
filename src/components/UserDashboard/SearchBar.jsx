@@ -1,10 +1,10 @@
 // src/components/SearchBar.jsx
 import React from 'react';
-import './SearchBar.css';
+import style from  './SearchBar.module.css';
 
 const SearchBar = ({ placeholder, value, onChange }) => {
   return (
-    <div className="search-bar">
+    <div className={style.searchBar}>
       <input
         type="text"
         placeholder={placeholder}

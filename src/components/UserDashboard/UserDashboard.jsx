@@ -98,11 +98,11 @@ const UserDashboard = () => {
     <div>
       <SiteHeader />
       <NavBar />
-      <center><div class="searchBar"><SearchBar 
+      <center><SearchBar 
         placeholder="Search workers by name, phone, role, or rating" 
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-      /></div></center>
+      /></center>
       <div className="home">
         <h1>Available Workers in Your Location</h1>
         <div className="worker-list">
