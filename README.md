@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Work on Wheels
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Firebase Hosting](https://img.shields.io/badge/Firebase-Hosting-blue)](https://workonwheels-e51e4.web.app/)
 
-## Available Scripts
+Work on Wheels is a web application built with React that connects users with service providers like plumbers, carpenters, painters, etc., and allows users to purchase products from nearby stores. This project features separate dashboards for users and service providers, providing distinct functionalities tailored to their needs.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [License](#license)
+- [Contact](#contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### User Dashboard
 
-### `npm test`
+- **Home**: Browse available service providers.
+- **Booking History**: View past bookings.
+- **Store**: Purchase products from nearby stores.
+- **Profile**: Manage user profile details.
+- **Cart**: View and manage items in the cart.
+- **Logout**: Sign out of the application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Worker Dashboard
 
-### `npm run build`
+- **Home**: View details of users who have booked the worker.
+- **Bookings**: Manage booking statuses (Executed, Pending, Rejected).
+- **Sell**: Add items to the store (available if the worker's role is 'seller').
+- **Orders**: View and manage orders placed by users.
+- **Profile**: Manage worker profile details.
+- **Graphs**: Visualize bookings and orders over specific date ranges (monthly, daily, hourly).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Frontend**: React
+- **Backend**: Firebase Firestore
+- **Authentication**: Firebase Authentication
+- **Storage**: Firebase Storage
+- **Hosting**: Firebase Hosting
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+- Visit the hosted application at [Work on Wheels](https://workonwheels-e51e4.web.app/).
+- Sign up as a user or worker.
+- Navigate through the respective dashboards to access features.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Screenshots
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![User Dashboard](path_to_your_screenshot_1)
+![Worker Dashboard](path_to_your_screenshot_2)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contributing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
 
-### Code Splitting
+For any inquiries, please contact:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Name**:Ch.Prajwal Chander
+- **Email**: prajwalchander2003@gmail.com
+- **GitHub**: PrajwalChander(https://github.com/PrajwalChander)
