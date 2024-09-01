@@ -2,7 +2,7 @@
 
 [![Firebase Hosting](https://img.shields.io/badge/Firebase-Hosting-blue)](https://workonwheels-e51e4.web.app/)
 
-Work on Wheels is a web application built with React that connects users with service providers like plumbers, carpenters, painters, etc., and allows users to purchase products from nearby stores. This project features separate dashboards for users and service providers, providing distinct functionalities tailored to their needs.
+**Work on Wheels** is a dynamic web application built with React that connects users with service providers such as plumbers, carpenters, and painters. It also allows users to purchase products from nearby stores. The application features separate dashboards for users and service providers, each with functionalities tailored to their needs.
 
 ## Table of Contents
 
@@ -10,13 +10,12 @@ Work on Wheels is a web application built with React that connects users with se
 - [Tech Stack](#tech-stack)
 - [Usage](#usage)
 - [Screenshots](#screenshots)
-- [License](#license)
+- [Contributing](#contributing)
 - [Contact](#contact)
 
 ## Features
 
 ### User Dashboard
-
 - **Home**: Browse available service providers.
 - **Booking History**: View past bookings.
 - **Store**: Purchase products from nearby stores.
@@ -25,7 +24,6 @@ Work on Wheels is a web application built with React that connects users with se
 - **Logout**: Sign out of the application.
 
 ### Worker Dashboard
-
 - **Home**: View details of users who have booked the worker.
 - **Bookings**: Manage booking statuses (Executed, Pending, Rejected).
 - **Sell**: Add items to the store (available if the worker's role is 'seller').
@@ -49,21 +47,17 @@ Work on Wheels is a web application built with React that connects users with se
 
 ## Screenshots
 
-![User Dashboard](path_to_your_screenshot_1)
-![Worker Dashboard](path_to_your_screenshot_2)
+![User Dashboard](gs://workonwheels-e51e4.appspot.com/Read_me/user_dashboard.png)
+![Worker Dashboard](gs://workonwheels-e51e4.appspot.com/Read_me/worker_dashboard.png)
 
 ## Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
 For any inquiries, please contact:
 
-- **Name**:Ch.Prajwal Chander
+- **Name**: Ch.Prajwal Chander
 - **Email**: prajwalchander2003@gmail.com
-- **GitHub**: PrajwalChander(https://github.com/PrajwalChander)
+- **GitHub**: [PrajwalChander](https://github.com/PrajwalChander)
