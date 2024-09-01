@@ -46,9 +46,7 @@
 - Navigate through the respective dashboards to access features.
 
 ## Screenshots
-
-![User Dashboard]([gs://workonwheels-e51e4.appspot.com/Read_me/user_dashboard.png](https://firebasestorage.googleapis.com/v0/b/workonwheels-e51e4.appspot.com/o/Read_me%2Fuser_dashboard.png?alt=media&token=a7d7bb76-6e09-4bda-9fc0-0652fca018db))
-![Worker Dashboard]([gs://workonwheels-e51e4.appspot.com/Read_me/worker_dashboard.png](https://firebasestorage.googleapis.com/v0/b/workonwheels-e51e4.appspot.com/o/Read_me%2Fworker_dashboard.png?alt=media&token=61a91251-74d7-4809-a553-a2c6737fd449))
+<img src="[gs://workonwheels-e51e4.appspot.com/Read_me/worker_dashboard.png](https://firebasestorage.googleapis.com/v0/b/workonwheels-e51e4.appspot.com/o/Read_me%2Fworker_dashboard.png?alt=media&token=61a91251-74d7-4809-a553-a2c6737fd449)" alt=" Worker Dashboard" width="500"/>
 
 ## Contributing
 
