@@ -45,9 +45,6 @@
 - Sign up as a user or worker.
 - Navigate through the respective dashboards to access features.
 
-## Screenshots
-<img src="https://firebasestorage.googleapis.com/v0/b/workonwheels-e51e4.appspot.com/o/Read_me%2Fworker_dashboard.png" alt=" Worker Dashboard" width="500"/>
-
 
 ## Contributing
 
